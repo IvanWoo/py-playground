@@ -1,4 +1,8 @@
 # https://www.youtube.com/watch?v=-PklUOOz4n8
+from collections import abc
+import types
+
+
 def iter_underhood():
     x = [1, 2, 3, 4]
     it = iter(x)
@@ -39,30 +43,59 @@ class MyListIterator:
             raise StopIteration
 
     def __iter__(self):
-        return MyListIterator(self.my_list, self.index)
+        return self
 
 
 class MyList:
     def __init__(self, data):
         self.data = list(data)
 
-    # the combination of __getitem__ and __len__ can provide iterable feature
     def __getitem__(self, index):
         return self.data[index]
 
     def __len__(self):
         return len(self.data)
 
-    # def __iter__(self):
-    #     return MyListIterator(self)
+    # the __iter__ provide iterable feature
+    def __iter__(self):
+        return MyListIterator(self)
+
+
+# use generator to implement iterable doesn't need a separate iterator
+class MyListG:
+    def __init__(self, data):
+        self.data = list(data)
+
+    # def __getitem__(self, index):
+    #     return self.data[index]
+
+    # def __len__(self):
+    #     return len(self.data)
+
+    def __iter__(self):
+        for d in self.data:
+            yield d
+        return
 
 
 def my():
+    print(f"{issubclass(MyList, abc.Iterable)=}")
     my_list = MyList([1, 2, 3, 4])
+    print(f"{isinstance(my_list, abc.Iterable)=}")
     print(my_list)
     it = iter(my_list)
+    print(f"{isinstance(it, types.GeneratorType)=}")
     print(it)
     for i in it:
+        print(i)
+
+    print(f"{issubclass(MyListG, abc.Iterable)=}")
+    my_list_g = MyListG(list(range(5, 10)))
+    print(f"{isinstance(my_list_g, abc.Iterable)=}")
+    it_g = iter(my_list_g)
+    print(f"{isinstance(it_g, types.GeneratorType)=}")
+    print(it_g)
+    for i in it_g:
         print(i)
 
 
