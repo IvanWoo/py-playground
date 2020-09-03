@@ -7,11 +7,12 @@ verify_ssl = true
 black = "*"
 mypy = "*"
 flake8 = "*"
+ipython = "*"
 
 [packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.8.5"
 
 [pipenv]
 allow_prereleases = true
