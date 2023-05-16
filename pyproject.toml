@@ -1,0 +1,30 @@
+[tool.pdm]
+allow_prereleases = true
+
+[[tool.pdm.source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black",
+    "mypy",
+    "flake8",
+    "ipython",
+]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Yifan Wu", email = "tyivanwu@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.8.5"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
