@@ -12,6 +12,8 @@ dev = [
     "mypy",
     "flake8",
     "ipython",
+    "line-profiler>=4.0.3",
+    "py-spy==0.3.14",
 ]
 
 [project]

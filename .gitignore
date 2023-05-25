@@ -52,3 +52,4 @@ coverage.xml
 .vscode/
 
 entries/.pdm-python
+*.lprof
