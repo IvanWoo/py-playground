@@ -39,7 +39,19 @@ pdm run python -m cProfile profile/fib.py
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
 ```
 
-## line-profiler
+### viz with [SnakeViz](https://github.com/jiffyclub/snakeviz)
+
+```sh
+pdm run python -m cProfile -o profile/assets/fib.prof profile/fib.py
+```
+
+```sh
+pdm run snakeviz profile/assets/fib.prof
+```
+
+![snakeviz](./assets/snakeviz.png)
+
+## [line-profiler](https://github.com/pyutils/line_profiler)
 
 ```sh
 pdm run kernprof -lv profile/lp_profile.py
@@ -63,7 +75,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
      9        29         17.0      0.6     89.5      return fib(x - 1) + fib(x - 2)
 ```
 
-## scalene
+## [scalene](https://github.com/plasma-umass/scalene)
 
 ```sh
 pdm run scalene --cli profile/fib.py
@@ -71,7 +83,7 @@ pdm run scalene --cli profile/fib.py
 
 ![scalene profile screenshot](./assets/scalene.png)
 
-## py-spy
+## [py-spy](https://github.com/benfred/py-spy)
 
 ```sh
 sudo pdm run py-spy record --function --gil -o profile/assets/py-spy-profile.svg -- python profile/fib.py
