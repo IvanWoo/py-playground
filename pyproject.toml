@@ -12,9 +12,6 @@ dev = [
     "mypy",
     "flake8",
     "ipython",
-    "line-profiler>=4.0.3",
-    "py-spy==0.3.14",
-    "snakeviz>=2.2.0",
 ]
 
 [project]
@@ -24,7 +21,12 @@ description = ""
 authors = [
     {name = "Yifan Wu", email = "tyivanwu@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "tuna>=0.5.11",
+    "line-profiler>=4.0.3",
+    "py-spy==0.3.14",
+    "snakeviz>=2.2.0",
+]
 requires-python = ">=3.8.5"
 license = {text = "MIT"}
 

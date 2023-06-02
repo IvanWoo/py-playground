@@ -39,17 +39,27 @@ pdm run python -m cProfile profile/fib.py
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
 ```
 
-### viz with [SnakeViz](https://github.com/jiffyclub/snakeviz)
+dump the output
 
 ```sh
 pdm run python -m cProfile -o profile/assets/fib.prof profile/fib.py
 ```
+
+### viz with [SnakeViz](https://github.com/jiffyclub/snakeviz)
 
 ```sh
 pdm run snakeviz profile/assets/fib.prof
 ```
 
 ![snakeviz](./assets/snakeviz.png)
+
+### viz with [tuna](https://github.com/nschloe/tuna)
+
+```sh
+pdm run tuna profile/assets/fib.prof
+```
+
+![tuna](./assets/tuna.png)
 
 ## [line-profiler](https://github.com/pyutils/line_profiler)
 
