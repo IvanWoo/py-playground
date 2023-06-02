@@ -11,7 +11,7 @@ def fib(x):
 
 
 with cProfile.Profile() as pr:
-    fib(30)
+    fib(35)
 
     sortby = SortKey.CUMULATIVE
     s = io.StringIO()

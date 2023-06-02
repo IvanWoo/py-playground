@@ -7,19 +7,35 @@ pdm run profile/c_profile.py
 ```
 
 ```sh
-         39 function calls (9 primitive calls) in 0.000 seconds
+         44 function calls (9 primitive calls) in 0.000 seconds
 
    Ordered by: cumulative time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     31/1    0.000    0.000    0.000    0.000 /Users/yifanwu/Projects/py-playground/profile/c_profile.py:6(fib)
-        1    0.000    0.000    0.000    0.000 /opt/homebrew/Caskroom/miniconda/base/envs/py-playground/lib/python3.9/pstats.py:107(__init__)
-        1    0.000    0.000    0.000    0.000 /opt/homebrew/Caskroom/miniconda/base/envs/py-playground/lib/python3.9/pstats.py:117(init)
-        1    0.000    0.000    0.000    0.000 /opt/homebrew/Caskroom/miniconda/base/envs/py-playground/lib/python3.9/pstats.py:136(load_stats)
-        1    0.000    0.000    0.000    0.000 /opt/homebrew/Caskroom/miniconda/base/envs/py-playground/lib/python3.9/cProfile.py:50(create_stats)
+     36/1    0.000    0.000    0.000    0.000 /Users/yifanwu/Projects/py-playground/profile/c_profile.py:6(fib)
+        1    0.000    0.000    0.000    0.000 /Users/yifanwu/.pyenv/versions/3.9.9/lib/python3.9/pstats.py:107(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/yifanwu/.pyenv/versions/3.9.9/lib/python3.9/pstats.py:117(init)
+        1    0.000    0.000    0.000    0.000 /Users/yifanwu/.pyenv/versions/3.9.9/lib/python3.9/pstats.py:136(load_stats)
+        1    0.000    0.000    0.000    0.000 /Users/yifanwu/.pyenv/versions/3.9.9/lib/python3.9/cProfile.py:50(create_stats)
         1    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
         1    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
         1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+```
+
+```sh
+pdm run python -m cProfile profile/fib.py
+```
+
+```sh
+         29860706 function calls (4 primitive calls) in 3.240 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    3.240    3.240 fib.py:1(<module>)
+29860703/1    3.240    0.000    3.240    3.240 fib.py:5(fib)
+        1    0.000    0.000    3.240    3.240 {built-in method builtins.exec}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
 ```
 
