@@ -1,7 +1,5 @@
+from dataclasses import dataclass
 from functools import wraps
-from collections import namedtuple
-
-Result = namedtuple("Result", "count average")
 
 
 # cannot be used for yield from
@@ -42,6 +40,12 @@ def test_averager():
         print(exc.value)
 
 
+@dataclass
+class Result:
+    count: int
+    average: float
+
+
 # the subgenerator
 def averager():
     total = 0
@@ -63,6 +67,16 @@ def grouper(results, key):
         results[key] = yield from averager()
 
 
+def report(results):
+    for key, result in sorted(results.items()):
+        group, unit = key.split(";")
+        print(
+            "{:2} {:5} averaging {:.2f}{}".format(
+                result.count, group, result.average, unit
+            )
+        )
+
+
 # the client code, a.k.a. the caller
 def main(data):
     results = {}
@@ -75,16 +89,6 @@ def main(data):
 
     print(results)
     report(results)
-
-
-def report(results):
-    for key, result in sorted(results.items()):
-        group, unit = key.split(";")
-        print(
-            "{:2} {:5} averaging {:.2f}{}".format(
-                result.count, group, result.average, unit
-            )
-        )
 
 
 data = {
