@@ -3,9 +3,9 @@
 ## setup
 
 ```sh
-conda create -n py-playground python=3.9 -y
+conda create -n py-playground python=3.12 -y
 conda activate py-playground
-conda install -c conda-forge scalene
+conda install -c conda-forge scalene -y
 ```
 
 ```sh
